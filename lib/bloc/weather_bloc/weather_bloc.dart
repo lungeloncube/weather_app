@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:weather_app/data/models/weather_model.dart';
 import 'package:weather_app/data/repositories/weather_repository.dart';
-import 'package:weather_app/weather_bloc/weather_event.dart';
-import 'package:weather_app/weather_bloc/weather_state.dart';
+import 'package:weather_app/bloc/weather_bloc/weather_event.dart';
+import 'package:weather_app/bloc/weather_bloc/weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   WeatherRepository weatherRepository;
