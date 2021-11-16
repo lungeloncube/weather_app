@@ -184,7 +184,23 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             Image.network(
-                                '$imageUrl${weather.list[index].weather[0].icon}.png'),
+                              '$imageUrl${weather.list[index].weather[0].icon}.png',
+                              loadingBuilder: (BuildContext context,
+                                  Widget child,
+                                  ImageChunkEvent loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes
+                                        : null,
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ],
