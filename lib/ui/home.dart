@@ -61,16 +61,31 @@ class _HomeState extends State<Home> {
                     } else if (state is WeatherLoadedState) {
                       return buildWeatherList(state.weatherModel);
                     } else if (state is WeatherErrorState) {
-                      return Container(
-                        height: 600,
-                        width: double.infinity,
-                        child: Center(
-                          child: Text(
-                            "An error occured while fetching the weather",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontFamily: 'CenturyGothicBold',
+                      return Center(
+                        child: Container(
+                          height: 600,
+                          width: double.infinity,
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Text(
+                                  "An error occured while fetching the weather",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontFamily: 'CenturyGothicBold',
+                                  ),
+                                ),
+                                OutlinedButton.icon(
+                                  label: Text("Retry"),
+                                  icon: Icon(Icons.refresh,
+                                      color: Colors.blue[400]),
+                                  onPressed: () {
+                                    weatherBloc.add(FetchWeatherEvent());
+                                  },
+                                )
+                              ],
                             ),
                           ),
                         ),
